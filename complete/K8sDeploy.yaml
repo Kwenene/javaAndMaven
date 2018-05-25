@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: javaAndMaven
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: javaAndMaven
+    spec:
+      containers:
+      - image: eppix.azurecr.io/javaAndMaven:__Build.BuildId__
+        name: gs-spring-boot-docker
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: javaAndMaven
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: javaAndMaven
+  type: LoadBalancer
