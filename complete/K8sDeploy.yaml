@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: javaAndMaven
+  name: javaAndMaven-deployment
 spec:
   replicas: 3
   template:
@@ -10,8 +10,8 @@ spec:
         app: javaAndMaven
     spec:
       containers:
-      - image: eppix.azurecr.io/javaAndMaven:__Build.BuildId__
-        name: javaAndMaven
+      - name: javaAndMaven-container
+        image: eppix.azurecr.io/javaAndMaven:__Build.BuildId__
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
