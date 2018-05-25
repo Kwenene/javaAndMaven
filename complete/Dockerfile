@@ -1,17 +1,17 @@
 FROM centos:7
 MAINTAINER Thembela Kwenene <thembela@kineticskunk.com>
 
-RUN yum update -y \
-  && yum install -y java-1.8.0-openjdk \
-     java-1.8.0-openjdk-devel \
-     maven \
-     git \
-     wget \
-     unzip \
-  && yum clean all
+ENV JAVA_VERSON 1.8.0
+ENV MAVEN_VERSION 3.3.9
 
-RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.0.702-linux.zip \
-  && unzip sonar-scanner-cli-3.0.0.702-linux.zip \
-  && rm sonar-scanner-cli-3.0.0.702-linux.zip \
-  && ln -s /sonar-scanner-3.0.0.702-linux/bin/sonar-scanner /bin/
-COPY sonar-scanner.properties /sonar-scanner-3.0.0.702-linux/conf/sonar-scanner.properties
+RUN yum update -y && \
+  yum install -y curl && \
+  yum install -y java-$JAVA_VERSON-openjdk java-$JAVA_VERSON-openjdk-devel && \
+  yum clean all
+
+RUN curl -fsSL https://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
+  && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+
+ENV JAVA_HOME /usr/lib/jvm/java
+ENV MAVEN_HOME /usr/share/maven
