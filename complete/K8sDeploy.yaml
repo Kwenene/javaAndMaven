@@ -16,7 +16,7 @@ spec:
         ports:
         - containerPort: 8080
       imagePullSecrets:
-        - name: regsecret
+        - name: javaAndMaven
 ---
 apiVersion: v1
 kind: Service
