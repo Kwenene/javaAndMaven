@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - image: eppix.azurecr.io/javaAndMaven:__Build.BuildId__
-        name: gs-spring-boot-docker
+        name: javaAndMaven
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
