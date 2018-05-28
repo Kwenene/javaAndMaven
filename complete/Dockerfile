@@ -54,4 +54,5 @@ EXPOSE 22
 ENV JAVA_HOME /usr/lib/jvm/java
 ENV MAVEN_HOME /usr/share/maven
 
+CMD ["java", "-jar", "/usr/lib/jenkins/jenkins.war"]
 #CMD ["/usr/sbin/sshd","-D"]
