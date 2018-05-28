@@ -1,4 +1,5 @@
 FROM centos:7
+
 MAINTAINER Thembela Kwenene <thembela@kineticskunk.com>
 
 # Install Essentials
@@ -19,6 +20,7 @@ RUN yum install -y git && \
 RUN curl -fsSL https://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn \
+  && curl -fsSL https://get.docker.com/ | sh \
   && yum clean all
 
 
@@ -46,10 +48,13 @@ RUN chmod 700 /home/jenkins/.ssh
 RUN echo "jenkins    ALL=(ALL)    ALL" >> etc/sudoers
 
 # Set Name Servers
-#COPY /files/resolv.conf /etc/resolv.conf
+COPY /files/resolv.conf /etc/resolv.conf
 
 # Expose SSH port and run SSHD
 EXPOSE 22
+
+RUN mkdir /usr/lib/jenkins/
+COPY jenkins.war /usr/lib/jenkins/jenkins.war
 
 ENV JAVA_HOME /usr/lib/jvm/java
 ENV MAVEN_HOME /usr/share/maven
