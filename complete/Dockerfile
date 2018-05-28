@@ -46,7 +46,7 @@ RUN chmod 700 /home/jenkins/.ssh
 RUN echo "jenkins    ALL=(ALL)    ALL" >> etc/sudoers
 
 # Set Name Servers
-COPY /files/resolv.conf /etc/resolv.conf
+#COPY /files/resolv.conf /etc/resolv.conf
 
 # Expose SSH port and run SSHD
 EXPOSE 22
