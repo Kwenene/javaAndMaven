@@ -7,7 +7,7 @@ metadata:
     description: "Ephemeral Ebis container for API testing. WARNING: Any data stored will be lost upon pod destruction."
     template.openshift.io/long-description: "This template defines the container needed to Behaviour Drivern API Testsrun automated tests."
     iconClass: "icon-apache"
-    tags: "ebis, cvms"
+    tags: "latest"
     template.openshift.io/provider-display-name: "Platform Capabilities Team"
 labels:
   template: cvms
