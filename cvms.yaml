@@ -85,7 +85,7 @@ parameters:
   displayName: "Git Repository URL"
   description: "The URL of the repository with the OpenShift templates."
 #  value: "https://pbdpgl1zafsrh.vodacom.corp/cicd/bustel_ocp.git"
-  value: "https://github.com/Kwenene/javaAndMaven.git"
+  value: "https://Kwenene:Login!123@github.com/Kwenene/javaAndMaven.git"
 - name: "SOURCE_REPOSITORY_REF"
   displayName: "Git Reference"
   description: "Set this to a branch name, tag or other ref of your repository if you are not using the default branch."
