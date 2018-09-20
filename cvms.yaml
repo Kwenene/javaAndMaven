@@ -38,10 +38,10 @@ objects:
         uri: "${SOURCE_REPOSITORY_URL}"
         ref: "${SOURCE_REPOSITORY_REF}"
       sourceSecret:
-        name: Zikiwe!1
+        name: ignore-https-gitconf
     strategy:
       dockerStrategy:
-        dockerfilePath: build.docker
+        dockerfilePath: javaAndMaven/build.docker
     output:
       to:
         kind: "ImageStreamTag"
