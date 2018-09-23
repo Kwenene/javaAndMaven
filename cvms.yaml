@@ -41,7 +41,7 @@ objects:
         name: ignore-https-gitconf
     strategy:
       dockerStrategy:
-        dockerfilePath: build.docker
+        dockerfilePath: build.dockerfile
     output:
       to:
         kind: "ImageStreamTag"
